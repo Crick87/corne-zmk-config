@@ -20,6 +20,24 @@
 
 / {
 
+    combos {
+        compatible = "zmk,combos";
+
+        combo_tab {
+	        timeout-ms = <50>;
+            key-positions = <2 3>;
+            bindings = <&kp TAB>;
+            layers = <0>;
+        };
+
+        combo_caps_word {
+	        timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&caps_word>;
+            layers = <0>;
+        };
+    };
+
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
@@ -36,7 +54,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            label = "COLEMK";
+            display-name = "COLEMK";
             bindings = <
                 &none  &kp Q       &kp W        &kp F       &kp P        &kp G        &kp J    &kp L        &hm ES_UMLAUT U    &kp Y             &hm ES_N_TILDE ES_ACUTE  &none
                 &none  &hm LGUI A  &hm LCTRL R  &hm LALT S  &hm LSHFT T  &kp D        &kp H    &hm LSHFT N  &hm LALT E         &hm LCTRL I       &hm LGUI O               &none
@@ -46,7 +64,7 @@
         };
 
         sym_layer {
-            label = "SYMBOL";
+            display-name = "SYMBOL";
             bindings = <
                 &none  &kp ES_PIPE  &kp ES_AMPS   &kp ES_DLLR  &kp ES_HASH  &kp ES_IQMARK        &kp ES_QMARK  &kp ES_EQUAL  &kp ES_DQT    &kp ES_APOS   &kp ES_GRAVE  &none
                 &none  &kp ES_LT    &kp ES_LBKT   &kp ES_LBRC  &kp ES_LPAR  &kp ES_IEXCL         &kp ES_EXCL   &kp ES_RPAR   &kp ES_RBRC   &kp ES_RBKT   &kp ES_GT     &none
@@ -56,7 +74,7 @@
         };
 
         num_layer {
-            label = "NUMBER";
+            display-name = "NUMBER";
             bindings = <
                 &none  &hm F11 F1    &hm F12 F2    &kp F3        &kp F4        &kp F5             &kp F6       &kp F7        &kp F8      &kp F9       &kp F10      &none
                 &none  &hm LGUI N1   &hm LCTRL N2  &hm LALT N3   &hm LSHFT N4  &kp N5             &kp N6       &hm RSHFT N7  &hm LALT N8 &hm RCTRL N9 &hm LGUI N0  &none
@@ -66,7 +84,7 @@
         };
 
         media_layer {
-            label = "MEDIA";
+            display-name = "MEDIA";
             bindings = <
                 &none  &out OUT_TOG  &none         &none         &none         &bt BT_CLR          &none  &none         &kp C_STOP        &none         &none  &none
                 &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4        &none  &kp C_PREV    &kp C_PLAY_PAUSE  &kp C_NEXT    &none  &none
@@ -76,12 +94,12 @@
         };
 
         nav_layer {
-            label = "NAVIG";
+            display-name = "NAVIG";
             bindings = <
-                &none  &kp ESC   &kp TAB    &kp CAPS  &kp PSCRN  &none        &kp PG_UP  &none     &kp UARW   &none     &none  &none
-                &none  &kp LGUI  &kp LCTRL  &kp LALT  &kp LSHFT  &none        &kp PG_DN  &kp LARW  &kp DARW   &kp RARW  &none  &none
-                &none  &none     &none      &none     &none      &none        &none      &kp HOME  &kp PG_DN  &kp END   &none  &none
-                                             &none  &kp ESC  &kp SPACE        &kp RET  &trans  &none
+                &none  &kp PSCRN  &kp TAB    &caps_word  &kp CAPS    &none            &kp PG_UP  &none     &kp UARW   &none     &none  &none
+                &none  &kp LGUI   &kp LCTRL  &kp LALT    &kp LSHFT   &none            &kp PG_DN  &kp LARW  &kp DARW   &kp RARW  &none  &none
+                &none  &none      &none      &none       &none       &none            &none      &kp HOME  &none      &kp END   &none  &none
+                                                     &none  &kp ESC  &kp SPACE        &kp RET  &trans  &none
             >;
         };
     };
